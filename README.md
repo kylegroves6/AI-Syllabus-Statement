@@ -30,7 +30,6 @@ It uses real text, not a picture, so it is readable by screen readers and resize
 ## Before it goes live
 
 - [ ] Get the wording approved (see Status above).
-- [ ] Ask Melanie Evans, who drafted the statements, to check the short summaries in the graphic. They are plain-language rewrites, not the exact syllabus text.
 - [ ] Confirm the line "From the Provost's AI Committee / Student Subcommittee" in the header is right. It was carried over from the original infographic.
 - [ ] Check the link at the bottom (libguides.wku.edu/stylewrite/ai).
 - [ ] Decide whether the lighter red steps in the scale are acceptable (see Colors).
