@@ -1,0 +1,98 @@
+/* AI Syllabus Statements graphic. Everything is scoped under .ai-statements so it can drop into an existing page.
+   Design width is 1600px. At wide container sizes the text scales with the container (cqw); on narrow ones it stacks.
+   Colors follow the WKU web color page (wku.edu/web-cms/best-practices/colors). Fonts match wku.edu: Open Sans, with Overpass for headings. */
+.ai-statements {
+  --ai-red: #b01e24;          /* WKU Red */
+  --ai-red-deep: #9a1a20;     /* WKU Red (Darker) */
+  --ai-ink: #222222;          /* Black Gray */
+  --ai-text: #555555;         /* Text Gray: base text on white */
+  --ai-rule: #cccccc;         /* Lighter Gray: borders */
+  --ai-wash: #efefef;         /* Lightest Gray: backgrounds */
+  --ai-paper: #ffffff;
+  /* Scale steps: WKU Red fading toward white. The tints are not in the WKU palette. */
+  --ai-s1: #b01e24; --ai-s2: #cc6d71; --ai-s3: #dfa5a7; --ai-s4: #efd2d3;
+  container-type: inline-size;
+  max-width: 1600px;
+  margin: 0 auto;
+  background: var(--ai-paper);
+  color: var(--ai-text);
+  font-family: "Open Sans", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.35;
+}
+.ai-statements *, .ai-statements *::before, .ai-statements *::after { box-sizing: border-box; }
+:where(.ai-statements) :where(p, h1, h2, h3, ol) { margin: 0; padding: 0; }
+
+/* Header */
+.ai-statements__header { background: var(--ai-red); color: #fff; padding: 1.5rem 1.25rem 1.75rem; }
+.ai-statements__org { font-size: .8rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.ai-statements__title { font-family: Overpass, "Open Sans", Arial, sans-serif; margin-top: .5rem; font-size: 2.1rem; line-height: 1.05; font-weight: 800; text-transform: uppercase; }
+.ai-statements__from { margin-top: .9rem; font-size: .95rem; }
+.ai-statements__from span { display: block; font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; opacity: .9; }
+.ai-statements__strip { height: .5rem; background: var(--ai-ink); }
+
+/* Body */
+.ai-statements__body { padding: 1.5rem 1.25rem 0; }
+.ai-statements__intro { font-size: 1.2rem; font-weight: 600; line-height: 1.3; color: var(--ai-ink); }
+.ai-statements__intro strong { color: var(--ai-red); }
+.ai-statements__scale { margin-top: 1.25rem; }
+.ai-statements__bar { display: grid; grid-template-columns: repeat(4, 1fr); height: .9rem; }
+.ai-statements__bar i:nth-child(1) { background: var(--ai-s1); }
+.ai-statements__bar i:nth-child(2) { background: var(--ai-s2); }
+.ai-statements__bar i:nth-child(3) { background: var(--ai-s3); }
+.ai-statements__bar i:nth-child(4) { background: var(--ai-s4); }
+.ai-statements__ends { display: flex; justify-content: space-between; margin-top: .4rem; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ai-text); }
+
+/* Tiers */
+.ai-statements__tiers { list-style: none; margin-top: 1rem; }
+.tier { padding: 1.25rem 0; border-top: 2px solid var(--ai-rule); }
+.tier__num { display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 50%; font-size: 1.5rem; font-weight: 800; color: var(--ai-ink); }
+.tier--1 .tier__num { background: var(--ai-s1); color: #fff; }
+.tier--2 .tier__num { background: var(--ai-s2); }
+.tier--3 .tier__num { background: var(--ai-s3); }
+.tier--4 .tier__num { background: var(--ai-s4); }
+.tier__name { font-family: Overpass, "Open Sans", Arial, sans-serif; color: var(--ai-ink); margin-top: .75rem; font-size: 1.5rem; line-height: 1.05; font-weight: 800; text-transform: uppercase; }
+.tier__kind { margin-top: .3rem; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ai-red); }
+.tier__summary { margin-top: .5rem; font-size: 1.15rem; font-weight: 700; line-height: 1.25; color: var(--ai-ink); }
+.tier__label { margin-top: .9rem; padding-top: .7rem; border-top: 2px solid var(--ai-rule); font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ai-text); }
+.tier__label + p { margin-top: .25rem; font-size: 1rem; }
+
+/* Notes and footer */
+.ai-statements__notes { margin-top: 1rem; padding: 1.25rem; background: var(--ai-wash); border-top: .3rem solid var(--ai-red); display: grid; gap: 1rem; }
+.ai-statements__notes-title { font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ai-red-deep); }
+.ai-statements__notes p { margin-top: .3rem; font-size: 1rem; }
+.ai-statements__notes a { color: var(--ai-red); }
+
+/* Wide layout: four columns, sizes scale with the container (1cqw = 16px at the 1600px design width) */
+@container (min-width: 960px) {
+  .ai-statements__header { position: relative; padding: 2.5cqw 4.5cqw 2.4cqw; }
+  .ai-statements__org { font-size: max(.75rem, 1.25cqw); }
+  .ai-statements__title { margin-top: .75cqw; font-size: 4.75cqw; }
+  .ai-statements__from { position: absolute; top: 2.75cqw; right: 4.5cqw; margin: 0; text-align: right; font-size: max(.8rem, 1.25cqw); }
+  .ai-statements__from span { font-size: max(.65rem, .95cqw); margin-bottom: .25cqw; }
+  .ai-statements__strip { height: .875cqw; }
+
+  .ai-statements__body { padding: 2.4cqw 4.5cqw 0; }
+  .ai-statements__intro { font-size: 1.875cqw; max-width: 80cqw; }
+  .ai-statements__scale { margin-top: 2.1cqw; }
+  .ai-statements__bar { height: 1.4cqw; }
+  .ai-statements__ends { margin-top: .5cqw; font-size: max(.7rem, 1.125cqw); }
+
+  .ai-statements__tiers { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 1.1cqw; }
+  .tier { padding: 0 1.5cqw 1.5cqw; border-top: 0; border-left: 2px solid var(--ai-rule); }
+  .tier:first-child { padding-left: 0; border-left: 0; }
+  .tier__num { width: 4cqw; height: 4cqw; font-size: 2.4cqw; }
+  .tier__name { margin-top: 1cqw; font-size: 2.5cqw; }
+  .tier__kind { margin-top: .4cqw; font-size: max(.7rem, 1.06cqw); }
+  .tier__summary { margin-top: .7cqw; min-height: 6.5cqw; font-size: 1.7cqw; }
+  .tier__label { margin-top: 1cqw; padding-top: .9cqw; font-size: max(.65rem, 1cqw); }
+  .tier__label + p { margin-top: .3cqw; font-size: max(.85rem, 1.5cqw); }
+
+  .ai-statements__notes { grid-template-columns: 1.15fr 1fr; gap: 0; padding: 1.6cqw 4.5cqw; border-top-width: .4cqw; }
+  .ai-statements__notes > div + div { padding-left: 2.5cqw; border-left: 2px solid var(--ai-rule); }
+  .ai-statements__notes-title { font-size: max(.7rem, 1.125cqw); }
+  .ai-statements__notes p { margin-top: .4cqw; font-size: max(.85rem, 1.44cqw); }
+  }
+
+@media print {
+  .ai-statements { max-width: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
